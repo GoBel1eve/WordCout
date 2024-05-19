@@ -1,0 +1,31 @@
+# Project: WordCout
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D_DEBUG_ -D__DEBUG__
+CC       = gcc.exe -D_DEBUG_ -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = WordCout/main.o WordCout/WordCout.o
+LINKOBJ  = WordCout/main.o WordCout/WordCout.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc     -g3 -mwindows -g3
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = WordCout.exe
+CXXFLAGS = $(CXXINCS) -std=c99 -g3 -g3
+CFLAGS   = $(INCS) -std=c99 -g3 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+WordCout/main.o: WordCout/main.c
+	$(CC) -c WordCout/main.c -o WordCout/main.o $(CFLAGS)
+
+WordCout/WordCout.o: WordCout/WordCout.c
+	$(CC) -c WordCout/WordCout.c -o WordCout/WordCout.o $(CFLAGS)
